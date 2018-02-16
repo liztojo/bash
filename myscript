@@ -1,0 +1,15 @@
+!/bin/bash
+FILE=$(ls -rt /home/cinnober/script/*CD1*.log | tail -1)
+if [[ $(grep -cE "InstrumentFileParseException" ${FILE}) -eq 0 ]]
+then
+	STATUS=OK
+	TEXT="No Parse Exception found"
+	echo ${TEXT}
+   
+else
+	STATUS=ERROR
+	TEXT="Parse Exception found"
+	echo ${TEXT}
+
+fi
+exit 0
